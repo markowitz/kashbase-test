@@ -14,6 +14,10 @@
 
 ```sh composer-update-all.sh```
 
+- cd into api folder and update env with db credentials
+
+```cd api```
+
 - run docker for all microservices
 
 ```sh run.sh```
