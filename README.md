@@ -32,6 +32,16 @@
 
 ```php artisan migrate --seed```
 
+#authentication
+
+- to authentication use the following credentials
+
+```0.0.0.0:42622/api/v1/authenticate```
+
+```email: user@transfers.com password: password```
+
+``` copy the access_token from the response```
+
 
 #TODO
 
