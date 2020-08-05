@@ -48,6 +48,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 ## Routes
 
 - url `POST` ```{base_url}/api/v1/authenticate```
+
      - params
 
      > `{ 
@@ -59,6 +60,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
      >    `}
 
 - url `POST` ```{base_url}/api/v1/transfer/initiate```
+
       - params
 
       > `{ 
@@ -70,6 +72,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
       >    `}
 
 - url `POST` ```{base_url}/api/v1/transfer/send```
+
       - params
 
       > `{ 
@@ -97,14 +100,15 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 
 
 - url `POST` ```{base_url}/api/v1/payments/pay```
-     - params
 
-     > `{ 
-     >
-     >     email:user@transfers.com
-     >
-     >     amount:100000
-     >    `}
+      - params
+
+      > `{ 
+      >
+      >     email:user@transfers.com
+      >
+      >     amount:100000
+      >    `}
 
 
 ### Notes
