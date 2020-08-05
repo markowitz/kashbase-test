@@ -29,6 +29,10 @@ Route::prefix('/v1')->group(function() {
         Route::prefix('sms')->group(function() {
             Route::post('/send', 'SmsController@send');
         });
+
+        Route::prefix('payments')->group(function() {
+            Route::post('pay', 'PaymentsController@pay');
+        });
     });
 
 });

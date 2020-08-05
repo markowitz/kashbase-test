@@ -16,7 +16,7 @@ class SendSms
         $this->client = $this->initClient('SMS');
     }
 
-    public function send(array $data)
+    public function send($data)
     {
         return $this->responseBody($this->client->post('api/send', $data));
     }

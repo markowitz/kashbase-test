@@ -58,18 +58,18 @@ services:
       - ./data/logs/microservices/transfers/nginx:/var/log/nginx
     networks:
       - backend
-  # payments:
-  #   container_name: kashbase.payments
-  #   build: ./microservices/payments
-  #   tty: true
-  #   env_file:
-  #     - ./.env
-  #   volumes:
-  #     - ./microservices/payments:/var/www
-  #     - ./data/logs/microservices/payments/php7:/var/log/php7
-  #     - ./data/logs/microservices/payments/nginx:/var/log/nginx
-  #   networks:
-  #     - backend
+  payments:
+    container_name: kashbase.payments
+    build: ./microservices/payments
+    tty: true
+    env_file:
+      - ./.env
+    volumes:
+      - ./microservices/payments:/var/www
+      - ./data/logs/microservices/payments/php7:/var/log/php7
+      - ./data/logs/microservices/payments/nginx:/var/log/nginx
+    networks:
+      - backend
   sms:
     container_name: kashbase.sms
     build: ./microservices/sms

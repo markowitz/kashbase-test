@@ -21,6 +21,7 @@ class AuthController extends Controller
 
         $accessToken = $user->createToken('authToken')->plainTextToken;
 
-        return response()->json(['message' => 'user authenticated', 'access_token' => $accessToken], 200);
+        return $this->respondWithSuccess(['access_token' => $accessToken], 'user authenticated successfully', 200);
+
     }
 }
