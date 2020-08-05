@@ -52,6 +52,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 
 > `{ 
 >     email:user@transfers.com
+>
 >     password:password
 >
 >    `}
@@ -61,6 +62,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 
 > `{ 
 >     account_number:0000000000
+>
 >     bank_code:011
 >
 >    `}
@@ -70,8 +72,11 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 
 > `{ 
 >     amount:100000
+>
 >     recipient:RCP_t2o5h99jc55q54n
+>
 >     reason:flex bro
+>
 >     currency:NGN
 >    `}
 
@@ -81,6 +86,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 
 > `{ 
 >     otp:864970
+>
 >     transfer_code:TRF_ihoddl0d1rajkzf
 >    `}
 
@@ -90,6 +96,7 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 
 > `{ 
 >     email:user@transfers.com
+>
 >     amount:100000
 >    `}
 
