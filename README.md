@@ -36,4 +36,11 @@
 #TODO
 
 - switch authentication to laravel passport for the endpoints, to enable scopes and Oauth
-- Payments microservices
+
+
+#notes
+
+- There are serveral ways microservices can communicate with each other there's RPC, Events and rest. i opted to use Events
+- I also logged my response from the sms. There are other ways to monitor if the event failed.
+
+
