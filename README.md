@@ -1,6 +1,18 @@
-# kashbase-test
+# Kashbase Test
 
-#INSTALLATION
+## Written in Laravel ❤️
+
+## Tasks
+
+Create 3 Microservices (Bank Transfer, SMS, Payment)
+
+ - Transfer (Paystack)
+ - Payment (Paystack Service)
+ - SMS (my.sendchamp.com)
+      - A user should be able to transfer fund and receive SMS
+      - A user should be able to pay and receive SMS
+
+## How to setup
 
 - clone repo
 
@@ -32,25 +44,60 @@
 
 ```php artisan migrate --seed```
 
-#authentication
 
-- to authentication use the following credentials
+## Routes
 
-```0.0.0.0:42622/api/v1/authenticate```
+- url `POST` ```{base_url}/api/v1/authenticate```
+- params
 
-```email: user@transfers.com password: password```
+> `{ 
+>     email:user@transfers.com
+>     password:password
+>
+>    `}
 
-``` copy the access_token from the response```
+- url `POST` ```{base_url}/api/v1/transfer/initiate```
+- params
+
+> `{ 
+>     account_number:0000000000
+>     bank_code:011
+>
+>    `}
+
+- url `POST` ```{base_url}/api/v1/transfer/send```
+- params
+
+> `{ 
+>     amount:100000
+>     recipient:RCP_t2o5h99jc55q54n
+>     reason:flex bro
+>     currency:NGN
+>    `}
 
 
-#TODO
+- url `POST` ```{base_url}/api/v1/transfer/finalize```
+- params
 
-- switch authentication to laravel passport for the endpoints, to enable scopes and Oauth
+> `{ 
+>     otp:864970
+>     transfer_code:TRF_ihoddl0d1rajkzf
+>    `}
 
 
-#notes
+- url `POST` ```{base_url}/api/v1/payments/pay```
+- params
 
+> `{ 
+>     email:user@transfers.com
+>     amount:100000
+>    `}
+
+
+### Notes
+- for the authentication i used laravel sanctum, for better authentication we can use laravel passport
 - There are serveral ways microservices can communicate with each other there's RPC, Events and rest. i opted to use Events
 - I also logged my response from the sms. There are other ways to monitor if the event failed.
+
 
 
