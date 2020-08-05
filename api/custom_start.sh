@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ ! -f "/var/www/.env" ]] && [[ -f "/var/www/.env.example" ]]; then
+	cp /var/www/.env.example /var/www/.env
+fi
+
 if [[ ! -z $TZ ]]; then
 	sed -i "s#;date.timezone =#date.timezone = '${TZ}'#g" /etc/php/7.2/fpm/php.ini
 fi

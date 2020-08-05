@@ -19,7 +19,7 @@ for d in * ; do
             echo "Running composer on the API router."
             composer update
             echo "Completed"
-            cd ../..
+            cd ../
         fi
     fi
 done

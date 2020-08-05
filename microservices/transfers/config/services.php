@@ -31,7 +31,7 @@ return [
     ],
 
     'paystack' => [
-        'url' => "https://api.paystack.co/",
+        'url' => env('PAYSTACK_URL'),
         'secret_key' => env('PAYSTACK_KEY')
     ]
 
