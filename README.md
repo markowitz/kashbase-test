@@ -48,66 +48,67 @@ Create 3 Microservices (Bank Transfer, SMS, Payment)
 ## Routes
 
 - url `POST` ```{base_url}/api/v1/authenticate```
-- params
+     - params
 
-> `{ 
->
->     email:user@transfers.com
->
->     password:password
->
->    `}
+     > `{ 
+     >
+     >     email:user@transfers.com
+     >
+     >     password:password
+     >
+     >    `}
 
 - url `POST` ```{base_url}/api/v1/transfer/initiate```
-- params
+      - params
 
-> `{ 
->
->     account_number:0000000000
->
->     bank_code:011
->
->    `}
+      > `{ 
+      >
+      >     account_number:0000000000
+      >
+      >     bank_code:011
+      >
+      >    `}
 
 - url `POST` ```{base_url}/api/v1/transfer/send```
-- params
+      - params
 
-> `{ 
->
->     amount:100000
->
->     recipient:RCP_t2o5h99jc55q54n
->
->     reason:flex bro
->
->     currency:NGN
->    `}
+      > `{ 
+      >
+      >     amount:100000
+      >
+      >     recipient:RCP_t2o5h99jc55q54n
+      >
+      >     reason:flex bro
+      >
+      >     currency:NGN
+      >    `}
 
 
 - url `POST` ```{base_url}/api/v1/transfer/finalize```
-- params
 
-> `{ 
->
->     otp:864970
->
->     transfer_code:TRF_ihoddl0d1rajkzf
->    `}
+      - params
+
+      > `{ 
+      >
+      >     otp:864970
+      >
+      >     transfer_code:TRF_ihoddl0d1rajkzf
+      >    `}
 
 
 - url `POST` ```{base_url}/api/v1/payments/pay```
-- params
+     - params
 
-> `{ 
->
->     email:user@transfers.com
->
->     amount:100000
->    `}
+     > `{ 
+     >
+     >     email:user@transfers.com
+     >
+     >     amount:100000
+     >    `}
 
 
 ### Notes
-- for the authentication i used laravel sanctum, for better authentication we can use laravel passport
+- for the authentication i used laravel sanctum, for better authentication we can use laravel passport  for better security and access level to endpoints.
 - There are serveral ways microservices can communicate with each other there's RPC, Events and rest. i opted to use Events
 - I also logged my response from the sms. There are other ways to monitor if the event failed.
 
