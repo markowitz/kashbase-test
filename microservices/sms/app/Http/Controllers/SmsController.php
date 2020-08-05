@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Sendchamp;
+use Illuminate\Support\Arr;
 
 class SmsController extends Controller
 {
@@ -22,6 +23,12 @@ class SmsController extends Controller
             'sender_name' => ['required', 'string']
         ]);
 
-        return $this->champ->send($request->all());
+        $response = $this->champ->send($request->all());
+
+        if(Arr::get($response, "status") === "success") {
+            return $this->respondWithSuccess('Message Sent', 200);
+        }
+
+        return $this->respondWithError($response['data'], $response['error'], 400);
     }
 }
