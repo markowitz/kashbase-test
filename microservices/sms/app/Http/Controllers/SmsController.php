@@ -14,8 +14,14 @@ class SmsController extends Controller
         $this->champ = $champ;
     }
 
-    public function send()
+    public function send(Request $request)
     {
-        return $this->champ->send();
+        $this->validate($request, [
+            'to' => ['required', 'numeric'],
+            'message' => ['required', 'min:15', 'string'],
+            'sender_name' => ['required', 'string']
+        ]);
+
+        return $this->champ->send($request->all());
     }
 }

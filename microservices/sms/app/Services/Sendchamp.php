@@ -18,14 +18,8 @@ class Sendchamp
         $this->client = new MicroservicesRequest($baseUrl, $token, false);
     }
 
-    public function send()
+    public function send(array $data)
     {
-        $data = [
-            'to' => '23490126727',
-            'message' => 'we are simulating the sms sending to test',
-            'sender_name' => 'test'
-        ];
-
          return $this->responseBody($this->client->post('api/v1/sms/send', $data));
     }
 }
