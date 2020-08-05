@@ -29,4 +29,3 @@
 
 - switch authentication to laravel passport for the endpoints, to enable scopes and Oauth
 - Payments microservices
-- Refactor some of the code for easily readability
