@@ -24,6 +24,14 @@
 
 - cd into the microservices and update the necessary third party endpoints and secret keys
 
+- enter into the api microservice
+
+```docker exec -it kashbase.router bash```
+
+- then run
+
+```php artisan migrate --seed```
+
 
 #TODO
 
