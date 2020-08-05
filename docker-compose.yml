@@ -1,0 +1,84 @@
+version: '2'
+
+networks:
+    backend:
+      driver: bridge
+
+services:
+
+  # --------------------------------------------------------
+  # Database
+  # --------------------------------------------------------
+
+  mysql:
+    container_name: db
+    image: mysql:5.7
+    restart: always
+    tty: true
+    ports:
+      - 3310:3306
+    env_file:
+      - ./.env
+    volumes:
+        - ./mysql:/var/lib/mysql
+    networks:
+      - backend
+  # --------------------------------------------------------
+  # Router
+  # --------------------------------------------------------
+
+  router:
+    build: api
+    container_name: kashbase.router
+    tty: true
+    ports:
+      - 42622:80
+    env_file:
+      - ./.env
+    volumes:
+      - ./api:/var/www
+      - ./data/logs/api/php7:/var/log/php7
+      - ./data/logs/api/nginx:/var/log/nginx
+    networks:
+      - backend
+
+  # --------------------------------------------------------
+  # Microservices
+  # --------------------------------------------------------
+
+  transfers:
+    container_name: kashbase.transfers
+    build: ./microservices/transfers
+    tty: true
+    env_file:
+      - ./.env
+    volumes:
+      - ./microservices/transfers:/var/www
+      - ./data/logs/microservices/transfers/php7:/var/log/php7
+      - ./data/logs/microservices/transfers/nginx:/var/log/nginx
+    networks:
+      - backend
+  # payments:
+  #   container_name: kashbase.payments
+  #   build: ./microservices/payments
+  #   tty: true
+  #   env_file:
+  #     - ./.env
+  #   volumes:
+  #     - ./microservices/payments:/var/www
+  #     - ./data/logs/microservices/payments/php7:/var/log/php7
+  #     - ./data/logs/microservices/payments/nginx:/var/log/nginx
+  #   networks:
+  #     - backend
+  sms:
+    container_name: kashbase.sms
+    build: ./microservices/sms
+    tty: true
+    env_file:
+      - ./.env
+    volumes:
+      - ./microservices/sms:/var/www
+      - ./data/logs/microservices/sms/php7:/var/log/php7
+      - ./data/logs/microservices/sms/nginx:/var/log/nginx
+    networks:
+      - backend
