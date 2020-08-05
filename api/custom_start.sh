@@ -37,16 +37,17 @@ sed -i "s/pm.max_requests.*/pm.max_requests = 500/" /etc/php/7.2/fpm/pool.d/www.
 # pm.max_spare_servers = 35
 # pm.max_requests = 500
 
-# while read p; do
-#     if [[ -z $p ]]; then continue; fi
-#     envvar=${p%=*}
-#     unset $envvar
-# done < .env
+while read p; do
+    if [[ -z $p ]]; then continue; fi
+    envvar=${p%=*}
+    unset $envvar
+done < .env
 
 php artisan key:generate
 
+ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/.
+
 service nginx start
 service php7.2-fpm start
-ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/.
 
 /start.sh

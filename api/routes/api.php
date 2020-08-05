@@ -23,7 +23,7 @@ Route::prefix('/v1')->group(function() {
         Route::prefix('transfer')->group(function() {
             Route::post('/initiate', 'TransferController@initiateTransfer');
             Route::post('finalize', 'TransferController@finalize');
-            Route::post('/', 'TransferController@transfer');
+            Route::post('/send', 'TransferController@transfer');
         });
 
         Route::prefix('sms')->group(function() {

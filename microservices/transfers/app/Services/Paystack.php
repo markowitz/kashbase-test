@@ -25,11 +25,7 @@ class Paystack
 
         $response = $this->responseBody($this->client->post('/transfer', $data));
 
-        if(!$response['status']) {
-            return $response;
-        }
-
-        return $this->transferResponse($response);
+        return $response;
 
     }
 
@@ -37,27 +33,15 @@ class Paystack
     {
         $response = $this->responseBody($this->client->post('/transfer/finalize_transfer', $data));
 
-        if(!$response['status']) {
-            return $response;
-        }
-
-        return $this->finalizeResponse($response);
+        return $response;
     }
 
-    public function pay()
-    {
-
-    }
 
     public function initiateTransfer($data)
     {
         $response = $this->responseBody($this->client->post('/transferrecipient', $data));
 
-        if(!$response['status']) {
-            return $response;
-        }
-
-        return $this->initiateResponse($response);
+        return $response;
     }
 
 

@@ -24,7 +24,15 @@ class TransfersController extends Controller
     {
         $requestedData = $request->validated();
 
-        return $this->paystack->initiateTransfer($requestedData);
+        $response = $this->paystack->initiateTransfer($requestedData);
+
+
+        if(!$response['status']) {
+            return $this->respondWithError($response['message'], 400);
+        }
+
+        return $this->respondWithSuccess($response['data'], $response['message'], 200);
+
 
     }
 
@@ -33,7 +41,13 @@ class TransfersController extends Controller
         $requestedData = $request->validated();
         $requestedData['source'] = 'balance'; //we can only tranfer from balance for now so user doesn't need to input data
 
-        return $this->paystack->transfer($requestedData);
+        $response = $this->paystack->transfer($requestedData);
+
+        if(!$response['status']) {
+            return $this->respondWithError($response['message'], 400);
+        }
+
+        return $this->respondWithSuccess($response['data'], $response['message'], 200);
     }
 
     public function finalize(FinalizeTransfer $request)
@@ -43,11 +57,12 @@ class TransfersController extends Controller
         $response = $this->paystack->finalizeTransfer($requestedData);
 
         if(!$response['status']) {
-            return response()->json(['message' => $response['message']], 400);
+            return $this->respondWithError($response['message'], 400);
         }
+
         $data = [
             'to' => '08137105984', //get logged in user phone number (simulating because i did not add phone number to user registration)
-            'message' => "you've successfully transfered {$response['amount']}{$response['currency']}",
+            'message' => "you've successfully transfered {$response['data']['amount']}{$response['data']['currency']}",
             'sender_name' => 'test'//hardcoding this for now. should add to env and type to request
         ];
 
@@ -58,7 +73,7 @@ class TransfersController extends Controller
         //as long as the payment went through we should flash a successful message t
         \Log::info($sms);
 
-        return response()->json(['message' => 'transfer successful'], 200);
+        return $this->respondWithSuccess($response['data'], $response['message'], 200);
 
 
     }

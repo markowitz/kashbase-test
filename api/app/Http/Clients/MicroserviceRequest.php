@@ -14,12 +14,13 @@ class MicroserviceRequest
     {
         $this->config = ['base_uri' => $base_url];
 
+        $this->config['headers'] = [
+            'Content-Type'  => 'application/json',
+            'Accept'        => 'application/json'
+        ];
+
         if(!$isMicroservice) {
-            $this->config['headers'] = [
-                'Authorization' => 'Bearer '.$token,
-                'Content-Type'  => 'application/json',
-                'Accept'        => 'application/json'
-            ];
+            $this->config['headers']['Authorization'] = 'Bearer '.$token;
         }
 
         $this->client = new Client($this->config);

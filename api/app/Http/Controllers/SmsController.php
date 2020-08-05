@@ -18,6 +18,6 @@ class SmsController extends Controller
 
     public function send(Request $request)
     {
-        return $this->client->post("api/send", $request->all());
+        return $this->client->post("send", $request->all());
     }
 }

@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('transfer')->group(function() {
     Route::post('/initiate', 'TransfersController@initiate');
     Route::post('finalize', 'TransfersController@finalize');
-    Route::post('/', 'TransfersController@transfer');
-});
+    Route::post('/send', 'TransfersController@transfer');
 
 
