@@ -10,4 +10,17 @@
 
 ```cd kashbase-test```
 
-- 
+- run composer update for all microservices
+
+```sh composer-update-all.sh```
+
+- cd into api folder and update env with db credentials
+
+```cd api```
+
+- run docker for all microservices
+
+```sh run.sh```
+
+- cd into the microservices and update the necessary third party endpoints and secret keys
+
