@@ -22,6 +22,7 @@ class TransfersController extends Controller
 
     public function initiate(InitiateTransfer $request)
     {
+
         $requestedData = $request->validated();
 
         $response = $this->paystack->initiateTransfer($requestedData);
